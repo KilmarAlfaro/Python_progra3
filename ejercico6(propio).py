@@ -1,5 +1,20 @@
+
+
+"""
+Este programa hace uso del combo box y el spin box, hace que el usuario ingrese que tan fanatico del anime se considera y dependiendo su eleccion de datos les mostrara un mensaje 
+diciendo si va por buen camino, o si esta seleccionando un nivel de fanatismo mayor al que deberia, esto obviamente es a especie de broma respecto a los animes pero usando este 
+mismo formato podria adaptarse a un entorno mas serio como lo puede ser ingresar el nivel de un ingeniero y cuantos años de experiencia posee.
+"""
+
+
+
+
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QPushButton, QFormLayout, QLabel, QComboBox, QSpinBox)
 import sys
+
+
+
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -7,15 +22,15 @@ class MainWindow(QMainWindow):
         self.setGeometry(400, 100, 400, 300)
         self.setWindowTitle("Catador de Animes")
 
-        # Crear el combo box para seleccionar nivel de fanatico del anime
+        # Crea el combo box para seleccionar nivel de fanatico del anime
         self.nivel_experiencia = QComboBox()
         self.nivel_experiencia.addItems(["Principiante", "Intermedio", "Avanzado"])
 
-        # Crear el spin box para ingresar cuántos animes ha visto
-        self.anos_experiencia = QSpinBox()
-        self.anos_experiencia.setRange(0, 50) 
+        # Crea el spin box para ingresar cuántos animes ha visto
+        self.animes_vistos = QSpinBox()
+        self.animes_vistos.setRange(0, 50) 
 
-        # Crear un labwl para mostrar el resultado
+        # Crea un labwl para mostrar el resultado
         self.resultado = QLabel()
 
         # Botón para capturar los datos
@@ -28,7 +43,7 @@ class MainWindow(QMainWindow):
 
         # Añadir los widgets al formulario
         layout.addRow("¿Qué tan fanático del anime te consideras?", self.nivel_experiencia)
-        layout.addRow("¿Cuántos animes has visto?", self.anos_experiencia)
+        layout.addRow("¿Cuántos animes has visto?", self.animes_vistos)
 
         # Añade el botón y el label para los resultados
         layout.addRow(boton)
@@ -41,7 +56,7 @@ class MainWindow(QMainWindow):
     def boton_click(self):
         # Lee los datos del combo box y del spin box
         nivel = self.nivel_experiencia.currentText()
-        animes_vistos = self.anos_experiencia.value()
+        animes_vistos = self.animes_vistos.value()
 
         # Definir las condiciones según el nivel y el número de animes vistos
         if nivel == "Avanzado" and animes_vistos < 20:

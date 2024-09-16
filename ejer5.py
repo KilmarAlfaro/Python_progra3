@@ -22,18 +22,18 @@ class MainWindow(QMainWindow):
         self.pais = QLineEdit()
         self.color_pelo = QLineEdit()
 
-        # Etiquetas para mostrar el resultado
+        # label para mostrar el resultado
         self.resultado = QLabel()
 
         # Botón para capturar los datos
         boton = QPushButton("Guardar datos")
         boton.clicked.connect(self.boton_click)
 
-        # Crear el layout del formulario
+        # Creacion del layout del formulario
         layout = QFormLayout()
         central = QWidget()
 
-        # Añadir los campos al formulario
+        # los campos del formulario
         layout.addRow("Nombre:", self.nombre)
         layout.addRow("Apellido:", self.apellido)
         layout.addRow("Edad:", self.edad)
@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
         layout.addRow("País:", self.pais)
         layout.addRow("Color de pelo:", self.color_pelo)
 
-        # Añadir el botón y la etiqueta para los resultados
+        # Añadir el botón y el label para los resultados
         layout.addRow(boton)
         layout.addRow(self.resultado)
 
@@ -68,7 +68,7 @@ class MainWindow(QMainWindow):
             "Color de pelo": self.color_pelo.text(),
         }
 
-        # Mostrar los datos en el QLabel (resultado)
+        # Mostrar los datos en el QLabel 
         texto_resultado = "\n".join([f"{clave}: {valor}" for clave, valor in datos.items()])
         self.resultado.setText(texto_resultado)
 
